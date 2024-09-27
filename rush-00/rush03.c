@@ -1,53 +1,46 @@
-#include <stdio.h>
-#include "ft_putchar.c"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rush03.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: csiqueir <carlos.felipe@hotmail.com.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/04 17:45:56 by marvin            #+#    #+#             */
+/*   Updated: 2021/12/04 21:47:57 by csiqueir         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+void ft_putchar(char c);
 
 void rush(int x, int y)
 {
-    char Caracter[3] = {'A', 'B', 'C'};
+    int height = 1;
+    int width;
 
-    int contadorLinha = 1;
-    int contadorX;
-    int contadorY;
-
-    while (contadorLinha <= y)
+    while (height <= y)
     {
-        if (contadorLinha != 1 && contadorLinha != y)
-        {   
-            contadorY = 1;
-            while (contadorY <= x)
+        width = 1;
+        while (width <= x)
+        {
+            if (width == 1 && (height == 1 || height == y))
             {
-                if (contadorY == 1 || contadorY == x)
-                {
-                    ft_putchar(Caracter[1]);
-                }
-                else
-                {
-                    ft_putchar(' ');
-                }
-                ++contadorY;
+                ft_putchar('A');
             }
-        }
-        else
-        {  
-            contadorX = 1;
-            while (contadorX <= x)
+            else if (width == x && (height == 1 || height == y))
             {
-                if (contadorX == 1)
-                {
-                    ft_putchar(Caracter[0]);
-                }
-                else if (contadorX == x)
-                {
-                    ft_putchar(Caracter[2]);
-                }
-                else
-                {
-                    ft_putchar(Caracter[1]);
-                }
-                ++contadorX;
+                ft_putchar('C');
             }
+            else if (width == 1 || width == x || height == 1 || height == y)
+            {
+                ft_putchar('B');
+            }
+            else
+            {
+                ft_putchar(' ');
+            }
+            ++width;
         }
         ft_putchar('\n');
-        ++contadorLinha;
+        ++height;
     }
 }
